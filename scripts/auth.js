@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const res = await fetch("https://iranai-backend.onrender.com/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email, password })
+                    body: JSON.stringify({ email, password }),
+                    credentials: "include"
                 });
 
                 const data = await res.json();

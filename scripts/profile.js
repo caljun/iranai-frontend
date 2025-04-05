@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
           res = await fetch(`https://iranai-backend.onrender.com/user/${otherUser}`);
         } else {
           res = await fetch("https://iranai-backend.onrender.com/me", {
-            headers: { Authorization: token }
+            headers: { Authorization: token },
+            credentials: "include"
           });
         }
   
@@ -67,7 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
             "Content-Type": "application/json",
             Authorization: token
           },
-          body: JSON.stringify({ name, image, category, reason })
+          body: JSON.stringify({ name, image, category, reason }),
+          credentials: "include"
         })
           .then((res) => res.json())
           .then((data) => {

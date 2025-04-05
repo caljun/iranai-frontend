@@ -70,7 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
               "Content-Type": "application/json",
               "Authorization": token
             },
-            body: JSON.stringify({ name, image, category, reason })
+            body: JSON.stringify({ name, image, category, reason }),
+            credentials: "include"
           });
   
           const data = await res.json();

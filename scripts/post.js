@@ -30,7 +30,8 @@ async function fetchPost() {
 
         const delRes = await fetch(`https://iranai-backend.onrender.com/${postId}`, {
           method: "DELETE",
-          headers: { Authorization: token }
+          headers: { Authorization: token },
+          credentials: "include"
         });
 
         if (delRes.ok) {
@@ -69,7 +70,8 @@ likeBtn.addEventListener("click", () => {
         toEmail: postOwnerEmail,
         postId: postId,
         type: "いいね"
-      })
+      }),
+      credentials: "include"
     }).catch(err => console.error("いいね通知送信エラー:", err));
   }
 });
@@ -109,7 +111,8 @@ submitComment.addEventListener("click", async () => {
         "Content-Type": "application/json",
         Authorization: token
       },
-      body: JSON.stringify({ text: comment })
+      body: JSON.stringify({ text: comment }),
+      credentials: "include"
     });
 
     if (res.ok) {
