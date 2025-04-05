@@ -6,7 +6,7 @@ let postOwnerEmail = "";
 
 async function fetchPost() {
   try {
-    const res = await fetch(`https://iranai-backend.onrender.com/posts/posts/${postId}`);
+    const res = await fetch(`https://iranai-backend.onrender.com/posts/${postId}`);
     if (!res.ok) {
       alert("投稿の取得に失敗しました");
       return;
@@ -28,7 +28,7 @@ async function fetchPost() {
         const confirmDelete = confirm("本当に削除しますか？");
         if (!confirmDelete) return;
 
-        const delRes = await fetch(`https://iranai-backend.onrender.com/${postId}`, {
+        const delRes = await fetch(`https://iranai-backend.onrender.com/posts/${postId}`, {
           method: "DELETE",
           headers: { Authorization: token },
           credentials: "include"
