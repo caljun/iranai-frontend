@@ -6,7 +6,13 @@ let postOwnerEmail = "";
 
 async function fetchPost() {
   try {
-    const res = await fetch(`https://iranai-backend.onrender.com/posts/${postId}`);
+    const res = await fetch(`https://iranai-backend.onrender.com/posts/${postId}`, {
+      method: "GET",
+      headers: {
+        Authorization: token
+      },
+      credentials: "include"
+    });
     if (!res.ok) {
       alert("投稿の取得に失敗しました");
       return;
@@ -83,7 +89,11 @@ const submitComment = document.getElementById("submitComment");
 
 async function fetchComments() {
   try {
-    const res = await fetch(`https://iranai-backend.onrender.com/${postId}/comments`);
+    const res = await fetch(`https://iranai-backend.onrender.com/posts/${postId}/comments`);
+    if (!res.ok) {
+      console.error("コメント取得エラー:", res.statusText);
+      return;
+    }
     const comments = await res.json();
     renderComments(comments);
   } catch (err) {
