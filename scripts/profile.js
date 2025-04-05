@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (otherUser) {
           res = await fetch(`https://iranai-backend.onrender.com/user/${otherUser}`);
         } else {
-          res = await fetch("https://iranai-backend.onrender.com/me", {
+          res = await fetch("https://iranai-backend.onrender.com/posts/me", {
             headers: { Authorization: token },
             credentials: "include"
           });
