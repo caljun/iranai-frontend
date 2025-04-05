@@ -6,7 +6,7 @@ let postOwnerEmail = "";
 
 async function fetchPost() {
   try {
-    const res = await fetch(`http://localhost:3000/posts/${postId}`);
+    const res = await fetch(`https://iranai-backend.onrender.com/posts/${postId}`);
     if (!res.ok) {
       alert("投稿の取得に失敗しました");
       return;
@@ -28,7 +28,7 @@ async function fetchPost() {
         const confirmDelete = confirm("本当に削除しますか？");
         if (!confirmDelete) return;
 
-        const delRes = await fetch(`http://localhost:3000/posts/${postId}`, {
+        const delRes = await fetch(`https://iranai-backend.onrender.com/${postId}`, {
           method: "DELETE",
           headers: { Authorization: token }
         });
@@ -59,7 +59,7 @@ likeBtn.addEventListener("click", () => {
 
   const myEmail = localStorage.getItem("username") + "@example.com";
   if (liked && postOwnerEmail !== myEmail) {
-    fetch("http://localhost:3000/notifications", {
+    fetch("https://iranai-backend.onrender.com/notifications", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +81,7 @@ const submitComment = document.getElementById("submitComment");
 
 async function fetchComments() {
   try {
-    const res = await fetch(`http://localhost:3000/posts/${postId}/comments`);
+    const res = await fetch(`https://iranai-backend.onrender.com/${postId}/comments`);
     const comments = await res.json();
     renderComments(comments);
   } catch (err) {
@@ -103,7 +103,7 @@ submitComment.addEventListener("click", async () => {
   if (comment === "") return;
 
   try {
-    const res = await fetch(`http://localhost:3000/posts/${postId}/comments`, {
+    const res = await fetch(`https://iranai-backend.onrender.com/posts/${postId}/comments`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

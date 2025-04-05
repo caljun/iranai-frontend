@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   
     try {
-      const res = await fetch("http://localhost:3000/notifications/me", {
+      const res = await fetch("https://iranai-backend.onrender.com/notifications/me", {
         headers: { Authorization: token }
       });
   

@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const username = email.split("@")[0]; // 仮のユーザー名
 
             try {
-                const res = await fetch("http://localhost:3000/register", {
+                const res = await fetch("https://iranai-backend.onrender.com/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email, password })

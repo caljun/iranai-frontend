@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
       try {
         let res;
         if (otherUser) {
-          res = await fetch(`http://localhost:3000/posts/user/${otherUser}`);
+          res = await fetch(`https://iranai-backend.onrender.com/user/${otherUser}`);
         } else {
-          res = await fetch("http://localhost:3000/posts/me", {
+          res = await fetch("https://iranai-backend.onrender.com/me", {
             headers: { Authorization: token }
           });
         }
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
       
-        fetch("http://localhost:3000/posts", {
+        fetch("https://iranai-backend.onrender.com/posts", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
