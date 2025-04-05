@@ -1,0 +1,32 @@
+<!-- post.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>投稿詳細</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="javascript:history.back()" class="back-btn">←</a>
+
+  <div class="post-detail">
+    <img id="detailImage" src="" alt="投稿画像">
+    <p id="postCaption"></p>
+    <div class="post-meta">
+      <p>カテゴリ: <span id="postCategory"></span></p>
+      <p>理由: <span id="postReason"></span></p>
+    </div>    
+    <div class="action-row">
+        <div class="like-btn">♡</div>
+    </div>      
+    <div class="comment-section">
+      <input type="text" id="commentInput" placeholder="コメントを書く...">
+      <button id="submitComment">送信</button>
+      <ul id="commentList"></ul>
+    </div>
+    <button id="deletePostBtn" class="delete-btn">削除</button>
+  </div>
+    <script src ="scripts/post.js"></script>
+</body>
+</html>
