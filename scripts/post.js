@@ -26,7 +26,7 @@ async function fetchPost() {
     document.getElementById("postCategory").textContent = post.category;
     document.getElementById("postReason").textContent = post.reason;
 
-    const currentEmail = localStorage.getItem("username") + "@example.com";
+    const currentEmail = localStorage.getItem("email");
     if (post.email === currentEmail) {
       const deleteBtn = document.getElementById("deletePostBtn");
       deleteBtn.style.display = "block";
@@ -64,7 +64,7 @@ likeBtn.addEventListener("click", () => {
   liked = !liked;
   likeBtn.textContent = liked ? "❤" : "♡";
 
-  const myEmail = localStorage.getItem("username") + "@example.com";
+  const myEmail = localStorage.getItem("email");
   if (liked && postOwnerEmail !== myEmail) {
     fetch("https://iranai-backend.onrender.com/notifications", {
       method: "POST",
