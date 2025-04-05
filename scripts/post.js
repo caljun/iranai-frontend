@@ -83,7 +83,7 @@ const submitComment = document.getElementById("submitComment");
 
 async function fetchComments() {
   try {
-    const res = await fetch(`https://iranai-backend.onrender.com/${postId}/comments`);
+    const res = await fetch(`https://iranai-backend.onrender.com/posts/${postId}/comments`);
     const comments = await res.json();
     renderComments(comments);
   } catch (err) {
