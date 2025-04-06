@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // プロフィール画像の読み込み
     const savedImage = localStorage.getItem("profileImage");
-    if (profileIcon && savedImage) {
+    if (profileIcon && savedImage && token) {
       profileIcon.src = savedImage;
     }
   
@@ -176,6 +176,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     // 初期表示
-    fetchPosts();
+    if (token) {
+      fetchPosts(); // 自分の投稿一覧を取得して表示
+    } else {
+      gallery.innerHTML = "";         // 投稿一覧は空
+      hideMyProfileElements();        // URL表示・編集系を非表示
+      fabBtn.style.display = "block"; // ＋ボタンは表示しておく
+    }
   });
   
