@@ -225,6 +225,59 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  const openLogin = document.getElementById("loginBtn");
+if (openLogin) {
+  openLogin.addEventListener("click", () => {
+    document.getElementById("loginPanel").classList.add("open");
+    document.body.classList.add("panel-open");
+  });
+}
+
+const closeLoginSlide = document.querySelector(".close-slide-login");
+if (closeLoginSlide) {
+  closeLoginSlide.addEventListener("click", () => {
+    document.getElementById("loginPanel").classList.remove("open");
+    document.body.classList.remove("panel-open");
+  });
+}
+
+const loginForm = document.getElementById("loginForm");
+if (loginForm) {
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+    const username = email.split("@")[0];
+
+    try {
+      const res = await fetch("https://iranai-backend.onrender.com/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+        credentials: "include"
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", username);
+        const userUrl = `https://iranai-frontend.onrender.com/index.html?user=${username}`;
+        localStorage.setItem("userUrl", userUrl);
+
+        document.getElementById("loginPanel").classList.remove("open");
+        alert("ログインに成功しました！");
+        location.reload();
+      } else {
+        alert(data.error || "ログインに失敗しました");
+      }
+    } catch (err) {
+      alert("サーバーエラーが発生しました");
+      console.error(err);
+    }
+  });
+}
+
+
   // 初期表示処理
   if (token) {
     fetchPosts();
