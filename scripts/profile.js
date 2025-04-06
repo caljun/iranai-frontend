@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  localStorage.clear();
   const gallery = document.querySelector(".gallery");
   const profileUrl = document.getElementById("profileUrl");
   const userUrl = document.getElementById("userUrl");
