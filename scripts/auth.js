@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (res.ok) {
                     localStorage.setItem("token", data.token); // ← JWTを保存
                     localStorage.setItem("username", username);
-                    const userUrl = `https://iranai.com/${username}`;
+                    const userUrl = `https://iranai-frontend.onrender.com/user/${username}`;
                     localStorage.setItem("userUrl", userUrl);
 
                     window.location.href = `profile.html?user=${username}`;
