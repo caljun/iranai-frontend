@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (closeSlide) {
     closeSlide.addEventListener("click", () => {
       document.getElementById("registerPanel").classList.remove("open");
-      document.body.classList.add("panel-open");
+      document.body.classList.remove("panel-open");
     });
   }
 

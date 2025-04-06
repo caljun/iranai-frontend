@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 投稿処理
   submitPostBtn.addEventListener("click", handlePostSubmit);
-  submitPostBtn.addEventListener("touchstart", handlePostSubmit);
 
   function handlePostSubmit() {
     const name = document.getElementById("postName").value.trim();
@@ -103,54 +102,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // ===================== 登録モーダル =====================
-  const registerModal = document.getElementById("registerModal");
-
-  // グローバルに登録モーダルを開く関数
-  window.openRegisterModal = function () {
-    if (registerModal) registerModal.style.display = "block";
-  };
-
-  if (registerModal) {
-    const registerCloseBtn = registerModal.querySelector(".close-register");
-    if (registerCloseBtn) {
-      registerCloseBtn.addEventListener("click", () => {
-        registerModal.style.display = "none";
-      });
-    }
-
-    const registerForm = registerModal.querySelector("#registerForm");
-    if (registerForm) {
-      registerForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const email = document.getElementById("registerEmail").value;
-        const password = document.getElementById("registerPassword").value;
-        const username = email.split("@")[0];
-
-        try {
-          const res = await fetch("https://iranai-backend.onrender.com/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password }),
-            credentials: "include"
-          });
-          const data = await res.json();
-          if (res.ok) {
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("username", username);
-            const userUrl = `https://iranai-frontend.onrender.com/index.html?user=${username}`;
-            localStorage.setItem("userUrl", userUrl);
-
-            registerModal.style.display = "none";
-            if (window.openModal) window.openModal();
-          } else {
-            alert(data.error || "登録に失敗しました");
-          }
-        } catch (err) {
-          alert("サーバーエラー");
-          console.error(err);
-        }
-      });
-    }
-  }
 });
