@@ -508,5 +508,35 @@ label[for="profileImageUpload"] {
     z-index: 1000; 
   }
   
+  #registerForm input[type="email"],
+  #registerForm input[type="password"] {
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+      box-sizing: border-box;
+  }
+  
+  #registerForm button[type="submit"] {
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      margin-top: 10px;
+  }
+  
+  #registerForm button[type="submit"]:hover {
+      background-color: #333;
+      transform: scale(1.03);
+  }
+
 
   
