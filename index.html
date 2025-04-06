@@ -58,8 +58,17 @@
       </form>
     </div>
   </div>
-
-  <!-- 投稿モーダル（modal.js側で制御）も別途ある前提 -->
+  <div id="registerPanel" class="slide-panel">
+    <div class="slide-header">
+      <span class="slide-title">アカウント登録</span>
+      <span class="close-slide">×</span>
+    </div>
+    <form id="registerForm">
+      <input type="email" id="registerEmail" placeholder="メールアドレス" required />
+      <input type="password" id="registerPassword" placeholder="パスワード" required />
+      <button type="submit">登録</button>
+    </form>
+  </div>
 
   <!-- スクリプト類 -->
   <script src="./scripts/profile.js"></script>
