@@ -83,12 +83,21 @@
             const fabBtn = document.getElementById("fabAddPost");
             if (fabBtn) {
                 fabBtn.addEventListener("click", function () {
-                    if (window.openModal) {
-                        window.openModal();
+                    const token = localStorage.getItem("token");
+                    if (!token) {
+                        if (window.openRegisterModal) {
+                            window.openRegisterModal();  // ← 登録モーダルを開く
+                        } else {
+                            alert("登録モーダルがありません");
+                        }
+                    } else {
+                        if (window.openModal) {
+                            window.openModal();
+                        }
                     }
                 });
             }
-        });
+        }); 
     </script>
 </body>
 </html>
