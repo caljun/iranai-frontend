@@ -277,7 +277,6 @@ if (loginForm) {
   });
 }
 
-
   // 初期表示処理
   if (token) {
     fetchPosts();
