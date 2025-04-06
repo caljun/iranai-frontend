@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // プロフィール画像のアップロード
   if (profileIcon && profileImageUpload) {
+    if (token) {}
     profileIcon.addEventListener("click", () => profileImageUpload.click());
     profileIcon.addEventListener("touchstart", () => profileImageUpload.click());
 
@@ -117,6 +118,10 @@ document.addEventListener("DOMContentLoaded", function () {
         reader.readAsDataURL(file);
       }
     });
+  } else {
+    profileIcon.style.pointerEvents = "none";
+    profileIcon.style.opacity = "0.5";
+    profileIcon.title = "変更できません";
   }
 
   // 投稿モーダル起動
