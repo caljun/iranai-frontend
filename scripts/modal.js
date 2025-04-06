@@ -103,4 +103,55 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  window.openRegisterModal = function () {
+    const modal = document.getElementById("registerModal");
+    if (modal) modal.style.display = "block";
+  };
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("registerModal");
+    const closeBtn = modal.querySelector(".close-register");
+  
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+    }
+  
+    const form = modal.querySelector("#registerForm");
+    if (form) {
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("registerEmail").value;
+        const password = document.getElementById("registerPassword").value;
+        const username = email.split("@")[0];
+  
+        try {
+          const res = await fetch("https://iranai-backend.onrender.com/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+            credentials: "include"
+          });
+          const data = await res.json();
+          if (res.ok) {
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("username", username);
+            const userUrl = `https://iranai-frontend.onrender.com/index.html?user=${username}`;
+            localStorage.setItem("userUrl", userUrl);
+  
+            modal.style.display = "none";
+            if (window.openModal) window.openModal();
+          } else {
+            alert(data.error || "登録に失敗しました");
+          }
+        } catch (err) {
+          alert("サーバーエラー");
+          console.error(err);
+        }
+      });
+    }
+  });
+  
   
