@@ -313,7 +313,7 @@ if (loginForm) {
       if (res.ok) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("username", username);
-        const userUrl = `https://iranai-frontend.onrender.com/index.html?user=${username}`;
+        const userUrl = `https://iranai-frontend.onrender.com/index.html?user=${email}`;
         localStorage.setItem("userUrl", userUrl);
 
         document.getElementById("loginPanel").classList.remove("open");
