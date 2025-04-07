@@ -141,7 +141,7 @@ if (token && profileIcon) {
         reader.onload = function (e) {
           const base64Image = e.target.result;
           profileIcon.src = e.target.result;
-          localStorage.setItem("Image", base64Image);
+          localStorage.setItem("profileImage", base64Image);
 
           fetch("https://iranai-backend.onrender.com/user/profile-image", {
             method: "PUT",
@@ -149,7 +149,7 @@ if (token && profileIcon) {
               "Content-Type": "application/json",
               Authorization: token
             },
-            body: JSON.stringify({ Image: base64Image })
+            body: JSON.stringify({ image: base64Image })
           })
             .then(res => res.json())
             .then(data => {
