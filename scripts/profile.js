@@ -95,24 +95,24 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ✅ サーバーからプロフィール画像を取得
-if (token && profileIcon) {
-  fetch("https://iranai-backend.onrender.com/user/profile-image", {
-    method: "GET",
-    headers: {
-      Authorization: token
-    }
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.profileImage) {
-        profileIcon.src = data.profileImage;
-        localStorage.setItem("profileImage", data.profileImage); // 任意キャッシュ
+  if (!otherUser && token && profileIcon) {
+    fetch("https://iranai-backend.onrender.com/user/profile-image", {
+      method: "GET",
+      headers: {
+        Authorization: token
       }
     })
-    .catch(err => {
-      console.error("プロフィール画像取得エラー:", err);
-    });
-}
+      .then(res => res.json())
+      .then(data => {
+        if (data.profileImage) {
+          profileIcon.src = data.profileImage;
+          localStorage.setItem("profileImage", data.profileImage); // 任意キャッシュ
+        }
+      })
+      .catch(err => {
+        console.error("プロフィール画像取得エラー:", err);
+      });
+  }
 
   // プロフィール画像の読み込み
   const savedImage = localStorage.getItem("profileImage");
