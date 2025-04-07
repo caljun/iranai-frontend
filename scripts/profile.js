@@ -141,7 +141,24 @@ if (token && profileIcon) {
         reader.onload = function (e) {
           const base64Image = e.target.result;
           profileIcon.src = e.target.result;
-          localStorage.setItem("profileImage", base64Image);
+          localStorage.setItem("Image", base64Image);
+
+          fetch("https://iranai-backend.onrender.com/user/profile-image", {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: token
+            },
+            body: JSON.stringify({ profileImage: base64Image })
+          })
+            .then(res => res.json())
+            .then(data => {
+              if (data.success) {
+                console.log("プロフィール画像保存完了:" , data);
+              })
+              .catch(err => {
+                console.error("プロフィール画像保存エラー:", err);
+              });
         };
         reader.readAsDataURL(file);
       }
