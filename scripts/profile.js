@@ -160,6 +160,7 @@ if (token && profileIcon) {
               });
         };
         reader.readAsDataURL(file);
+        profileImageUpload.value = "";
       }
     });
   } else {
