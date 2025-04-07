@@ -261,6 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (res.ok) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("username", username);
+          localStorage.setItem("email", email);
           const userUrl = `https://iranai-frontend.onrender.com/index.html?user=${email}`;
           localStorage.setItem("userUrl", userUrl);
 
@@ -313,6 +314,7 @@ if (loginForm) {
       if (res.ok) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("username", username);
+        localStorage.setItem("email", email);
         const userUrl = `https://iranai-frontend.onrender.com/index.html?user=${email}`;
         localStorage.setItem("userUrl", userUrl);
 
