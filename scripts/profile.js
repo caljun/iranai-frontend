@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       let res;
       if (otherUser) {
-        res = await fetch(`https://iranai-backend.onrender.com/posts/user/${otherUser}`);
+        res = await fetch(`https://iranai-backend.onrender.com/posts/user-email/${otherUser}`);
       } else {
         res = await fetch("https://iranai-backend.onrender.com/posts/me", {
           headers: { Authorization: token },
@@ -261,7 +261,7 @@ if (token && profileIcon) {
         if (res.ok) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("username", username);
-          const userUrl = `https://iranai-frontend.onrender.com/index.html?user=${username}`;
+          const userUrl = `https://iranai-frontend.onrender.com/index.html?user=${email}`;
           localStorage.setItem("userUrl", userUrl);
 
           document.getElementById("registerPanel").classList.remove("open");
