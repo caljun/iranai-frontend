@@ -149,11 +149,10 @@ if (token && profileIcon) {
               "Content-Type": "application/json",
               Authorization: token
             },
-            body: JSON.stringify({ profileImage: base64Image })
+            body: JSON.stringify({ Image: base64Image })
           })
             .then(res => res.json())
             .then(data => {
-              if (data.success) {
                 console.log("プロフィール画像保存完了:" , data);
               })
               .catch(err => {
