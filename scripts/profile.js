@@ -101,11 +101,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // プロフィール画像のアップロード
-  if (profileIcon && profileImageUpload) {
-    if (token) {}
-    profileIcon.addEventListener("click", () => profileImageUpload.click());
-    profileIcon.addEventListener("touchstart", () => profileImageUpload.click());
-
+  if (profileIcon && profileImageUpload && token) {
+    let isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  
+    const triggerFileInput = () => profileImageUpload.click();
+  
+    // スマホ or タブレット
+    if (isTouchDevice) {
+      profileIcon.addEventListener("touchstart", triggerFileInput);
+    } else {
+      // PC
+      profileIcon.addEventListener("click", triggerFileInput);
+    }
+  
     profileImageUpload.addEventListener("change", function (event) {
       const file = event.target.files[0];
       if (file) {
@@ -118,10 +126,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   } else {
-    profileIcon.style.pointerEvents = "none";
-    profileIcon.style.opacity = "0.5";
-    profileIcon.title = "変更できません";
-  }
+    if (profileIcon) {
+      profileIcon.style.pointerEvents = "none";
+      profileIcon.style.opacity = "0.5";
+      profileIcon.title = "変更できません";
+    }
+  }  
 
   // 投稿モーダル起動
   if (fabBtn && token) {
