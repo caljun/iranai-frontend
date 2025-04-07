@@ -38,6 +38,7 @@ body {
 /* プロフィールセクション */
 .profile-section {
     margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .profile-section img {
