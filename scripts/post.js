@@ -27,7 +27,6 @@ async function fetchPost() {
     document.getElementById("postReason").textContent = post.reason;
 
     const currentEmail = localStorage.getItem("email");
-    const token = localStorage.getItem("token");
     if (token && post.email === currentEmail) {
       const deleteBtn = document.getElementById("deletePostBtn");
       deleteBtn.style.display = "block";
