@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
   submitPostBtn.addEventListener("click", handlePostSubmit);
 
   function handlePostSubmit() {
+    submitPostBtn.disabled = true;
+    submitPostBtn.textContent = "投稿中...";
     const name = document.getElementById("postName").value.trim();
     const category = document.getElementById("postCategory").value;
     const reason = document.getElementById("postReason").value.trim();
