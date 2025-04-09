@@ -333,7 +333,9 @@ if (loginForm) {
 }
 
   // 初期表示処理
-  if (token) {
+  if (otherUser) {
+    fetchPosts();
+  } else if (token) {
     fetchPosts();
   } else {
     gallery.innerHTML = "";
