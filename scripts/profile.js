@@ -262,8 +262,8 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem("token", data.token);
           localStorage.setItem("username", username);
           localStorage.setItem("email", email);
-          const encodeEmail = encodeURIComponent(email);
-          const userUrl = `https://iranai-frontend.onrender.com/index.html?user=${encodeEmail}`;
+          const encodedEmail = encodeURIComponent(email);
+          const userUrl = `https://iranai-frontend.onrender.com/index.html?user=${encodedEmail}`;
           localStorage.setItem("userUrl", userUrl);
 
           document.getElementById("registerPanel").classList.remove("open");
