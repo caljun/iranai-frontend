@@ -245,6 +245,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (registerForm) {
     registerForm.addEventListener("submit", async (e) => {
       e.preventDefault();
+      const submitBtn = registerForm.querySelector("button[type='submit']");
+      submitBtn.disabled = true;
+      submitBtn.textContent = "登録中...";
       const email = document.getElementById("registerEmail").value;
       const password = document.getElementById("registerPassword").value;
       const username = email.split("@")[0];
@@ -299,6 +302,9 @@ const loginForm = document.getElementById("loginForm");
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    const submitBtn = loginForm.querySelector("button[type='submit']");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "ログイン中...";
     const email = document.getElementById("loginEmail").value;
     const password = document.getElementById("loginPassword").value;
     const username = email.split("@")[0];
