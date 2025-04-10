@@ -1,5 +1,3 @@
-// scripts/post.js
-
 const postId = new URLSearchParams(location.search).get("id");
 const token = localStorage.getItem("token");
 let postOwnerEmail = "";
