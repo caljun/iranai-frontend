@@ -120,6 +120,19 @@ document.addEventListener("DOMContentLoaded", function () {
     profileIcon.src = savedImage;
   }
 
+  if (otherUser && profileIcon) {
+    fetch(`https://iranai-backend.onrender.com/user/profile-image/${otherUser}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.profileImage) {
+          profileIcon.src = data.profileImage;
+        }
+      })
+      .catch(err => {
+        console.error("他人プロフィール画像取得エラー:", err);
+      });
+  }  
+
   // プロフィール画像のアップロード
   if (profileIcon && profileImageUpload && token) {
     let isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;

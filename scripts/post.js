@@ -4,11 +4,11 @@ let postOwnerEmail = "";
 
 async function fetchPost() {
   try {
+    const headers = token ? { Authorization: token } : {};
+
     const res = await fetch(`https://iranai-backend.onrender.com/posts/${postId}`, {
       method: "GET",
-      headers: {
-        Authorization: token
-      },
+      headers: headers,
       credentials: "include"
     });
     if (!res.ok) {
@@ -27,7 +27,7 @@ async function fetchPost() {
     const currentEmail = localStorage.getItem("email");
     const viewingEmail = new URLSearchParams(location.search).get("user");
 
-    if (token && post.email === currentEmail && (!viewingEmail || viewingEmail === currentEmail)) {
+    if (token && post.email === currentEmail) {
       const deleteBtn = document.getElementById("deletePostBtn");
       deleteBtn.style.display = "block";
       deleteBtn.addEventListener("click", async () => {
