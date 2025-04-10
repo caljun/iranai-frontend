@@ -27,7 +27,7 @@ async function fetchPost() {
     const currentEmail = localStorage.getItem("email");
     const viewingEmail = new URLSearchParams(location.search).get("user");
 
-    if (token && post.email === currentEmail) {
+    if (token && post.email === currentEmail && (!viewingEmail || viewingEmail === currentEmail)) {
       const deleteBtn = document.getElementById("deletePostBtn");
       deleteBtn.style.display = "block";
       deleteBtn.addEventListener("click", async () => {
