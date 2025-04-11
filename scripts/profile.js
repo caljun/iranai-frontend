@@ -179,7 +179,6 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     if (profileIcon) {
       profileIcon.style.pointerEvents = "none";
-      profileIcon.style.opacity = "0.5";
       profileIcon.title = "変更できません";
     }
   }  
@@ -231,11 +230,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // ログアウト
   const logoutBtn = document.getElementById("logoutBtn");
   if (logoutBtn) {
-    logoutBtn.addEventListener("click", function () {
+    if (token) {
+      logoutBtn.style.display = "block";
+      logoutBtn.addEventListener("click", function () {
       localStorage.clear();
       window.location.href = "index.html";
     });
+  } else {
+    logoutBtn.style.display = "none";
   }
+}
 
   // ✅ アカウント作成スライドパネル起動
   const openRegister = document.getElementById("openRegisterFromMenu");
