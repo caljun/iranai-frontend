@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>iranai - プロフィール</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
   <!-- 固定ヘッダー -->
@@ -73,5 +74,12 @@
   <!-- スクリプト類 -->
   <script src="./scripts/profile.js"></script>
   <script src="./scripts/modal.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('Service Worker registered', reg))
+        .catch(err => console.error('Service Worker error', err));
+    }
+  </script>  
 </body>
 </html>
